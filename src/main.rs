@@ -83,6 +83,6 @@ fn generate_first_sentence(parent: &mut String) {
 fn random_char() -> char {
     match rand::thread_rng().gen_range('A' as u8, '\\' as u8) as char {
         '[' => ' ',
-        c @ _ => c,
+        c => c,
     }
 }
