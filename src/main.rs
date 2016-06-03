@@ -1,8 +1,4 @@
-// Author : Thibault Barbie
-//
-// A simple evolutionary algorithm written in Rust.
-//
-//
+//! A simple evolutionary algorithm written in Rust.
 
 extern crate rand;
 
