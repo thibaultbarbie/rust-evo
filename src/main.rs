@@ -25,7 +25,7 @@ fn main() {
         counter+=1;
         let mut sentences=HashMap::new();
         let mut f_min : u32 = 30;
-        for i in 0..nb_copy {
+        for _ in 0..nb_copy {
             let sentence=mutate(&mut parent, mutation_rate);
             let f=fitness(&target, &sentence);
             sentences.insert(f,sentence);
@@ -69,7 +69,7 @@ fn mutate(sentence : &mut String, mutation_rate : f64) -> String {
 
 
 fn generate_first_sentence (parent : &mut String) {
-    for i in 0..28 {
+    for _ in 0..28 {
         parent.push(random_char());
     }
 }
