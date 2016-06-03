@@ -1,0 +1,7 @@
+[package]
+name = "evolutionary"
+version = "0.1.0"
+authors = ["thibaultbarbie <thibault.barbie@free.fr>"]
+
+[dependencies]
+rand="0.3"
