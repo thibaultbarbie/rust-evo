@@ -48,7 +48,7 @@ fn main() {
 }
 
 
-fn fitness(target: &String, sentence: &String) -> u32 {
+fn fitness(target: &str, sentence: &str) -> u32 {
     let mut fitness = 0;
 
     for (c1, c2) in target.chars().zip(sentence.chars()) {
@@ -60,7 +60,7 @@ fn fitness(target: &String, sentence: &String) -> u32 {
     fitness
 }
 
-fn mutate(sentence: &mut String, mutation_rate: f64) -> String {
+fn mutate(sentence: &str, mutation_rate: f64) -> String {
     let mut rng = rand::thread_rng();
     let mut mutation = String::new();
     
@@ -70,6 +70,7 @@ fn mutate(sentence: &mut String, mutation_rate: f64) -> String {
             true => mutation.push(random_char()),   // mutation
         }
     }
+
     mutation
 }
 
