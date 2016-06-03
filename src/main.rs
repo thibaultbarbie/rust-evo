@@ -28,9 +28,11 @@ fn main() {
         for _ in 0..nb_copy {
             let sentence = mutate(&mut parent, mutation_rate);
             let f = fitness(&target, &sentence);
-            sentences.insert(f,sentence);
 
-            if f<f_min { f_min = f; }
+            sentences.insert(f,sentence);
+            if f<f_min {
+                f_min = f;
+            }
         }
         
         if fitness(&target, &parent) > f_min {
@@ -65,7 +67,6 @@ fn fitness(target: &String, sentence: &String) -> u32 {
 /// 0 and 1.
 fn mutate(sentence: &mut String, mutation_rate: f64) -> String {
     let mut rng = rand::thread_rng();
-    
     let mut mutation: String = "".to_string();
 
     for c in sentence.chars() {
@@ -75,6 +76,7 @@ fn mutate(sentence: &mut String, mutation_rate: f64) -> String {
             mutation.push(random_char());
         }
     }
+
     mutation
 }
 
@@ -88,7 +90,7 @@ fn generate_first_sentence(parent: &mut String) {
 /// Generates a random char (between 'A' and '\\').
 fn random_char() -> char {
     match rand::thread_rng().gen_range('A' as u8, '\\' as u8) as char {
-        '[' => ' ',
-        c @ _ => c
+        '['     => ' ',
+        c @ _   => c
     }
 }
