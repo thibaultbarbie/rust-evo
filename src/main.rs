@@ -49,15 +49,15 @@ fn main() {
 
 
 fn fitness(target: &str, sentence: &str) -> u32 {
-    let mut fitness = 0;
-
-    for (c1, c2) in target.chars().zip(sentence.chars()) {
-        if c1 != c2 {
-            fitness += 1
-        };
-    }
-
-    fitness
+    target.chars()
+          .zip(sentence.chars())
+          .fold(0, |acc, (c1, c2)| {
+              if c1 != c2 {
+                  acc + 1
+              } else {
+                  acc
+              }
+          })
 }
 
 fn mutate(sentence: &str, mutation_rate: f64) -> String {
