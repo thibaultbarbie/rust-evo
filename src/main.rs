@@ -14,13 +14,13 @@ fn main() {
     println!("{}", parent);
 
     let nb_copy = 400;
-    let mutation_rate: f64 = 0.05;
+    let mutation_rate = 0.05;
     let mut counter = 0;
 
     while fitness(&target, &parent) != 0 {
         counter += 1;
         let mut sentences = HashMap::new();
-        let mut f_min: u32 = 30;
+        let mut f_min = 30;
         for _ in 0..nb_copy {
             let sentence = mutate(&mut parent, mutation_rate);
             let f = fitness(&target, &sentence);
