@@ -65,9 +65,10 @@ fn mutate(sentence: &str, mutation_rate: f64) -> String {
     let mut mutation = String::new();
     
     for c in sentence.chars() {
-        match mutation_rate > rng.gen_range(0.0, 1.0) {
-            false => mutation.push(c),               // no mutation
-            true => mutation.push(random_char()),   // mutation
+        if mutation_rate > rng.gen_range(0.0, 1.0) {
+            mutation.push(random_char());
+        } else {
+            mutation.push(c);
         }
     }
 
