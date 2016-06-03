@@ -6,10 +6,10 @@ use rand::Rng;
 use std::collections::HashMap;
 
 fn main() {
-    let target: String = "METHINKS IT IS LIKE A WEASEL".to_string();
+    let target = "METHINKS IT IS LIKE A WEASEL".to_string();
     println!("{}", target);
 
-    let mut parent: String = "".to_string();
+    let mut parent = String::new();
     generate_first_sentence(&mut parent);
     println!("{}", parent);
 
@@ -57,7 +57,7 @@ fn fitness(target: &String, sentence: &String) -> u32 {
 fn mutate(sentence: &mut String, mutation_rate: f64) -> String {
     let mut rng = rand::thread_rng();
 
-    let mut mutation: String = "".to_string();
+    let mut mutation = String::new();
     for c in sentence.chars() {
         match mutation_rate > rng.gen_range(0f64, 1f64) {
             false => mutation.push(c),               // no mutation
