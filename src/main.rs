@@ -75,40 +75,8 @@ fn generate_first_sentence (parent : &mut String) {
 }
 
 fn random_char() -> char {
-    let mut c : char=' ';
-
-    let mut rng=rand::thread_rng();
-    let x=rng.gen_range(0,27);
-    
-    match x {
-        0 => c = 'A',
-        1 => c = 'B',
-        2 => c = 'C',
-        3 => c = 'D',
-        4 => c = 'E',
-        5 => c = 'F',
-        6 => c = 'G',
-        7 => c = 'H',
-        8 => c = 'I',
-        9 => c = 'J',
-        10 => c = 'K',
-        11 => c = 'L',
-        12 => c = 'M',
-        13 => c = 'N',
-        14 => c = 'O',
-        15 => c = 'P',
-        16 => c = 'Q',
-        17 => c = 'R',
-        18 => c = 'S',
-        19 => c = 'T',
-        20 => c = 'U',
-        21 => c = 'V',
-        22 => c = 'W',
-        23 => c = 'X',
-        24 => c = 'Y',
-        25 => c = 'Z',
-        26 => c = ' ',
-        _ => {},
+    match rand::thread_rng().gen_range('A' as u8, '\\' as u8) as char {
+        '[' => ' ',
+        c @ _ => c
     }
-    c
 }
