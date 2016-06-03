@@ -11,6 +11,7 @@ fn main() {
 
     let mut parent = String::new();
     generate_first_sentence(&mut parent);
+
     println!("{}", parent);
 
     let nb_copy = 400;
@@ -19,11 +20,14 @@ fn main() {
 
     while fitness(&target, &parent) != 0 {
         counter += 1;
+
         let mut sentences = HashMap::new();
         let mut f_min = 30;
+
         for _ in 0..nb_copy {
             let sentence = mutate(&mut parent, mutation_rate);
             let f = fitness(&target, &sentence);
+
             sentences.insert(f, sentence);
 
             if f < f_min {
@@ -46,18 +50,20 @@ fn main() {
 
 fn fitness(target: &String, sentence: &String) -> u32 {
     let mut fitness = 0;
+
     for (c1, c2) in target.chars().zip(sentence.chars()) {
         if c1 != c2 {
             fitness += 1
         };
     }
+
     fitness
 }
 
 fn mutate(sentence: &mut String, mutation_rate: f64) -> String {
     let mut rng = rand::thread_rng();
-
     let mut mutation = String::new();
+    
     for c in sentence.chars() {
         match mutation_rate > rng.gen_range(0f64, 1f64) {
             false => mutation.push(c),               // no mutation
